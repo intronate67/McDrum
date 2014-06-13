@@ -1,0 +1,4 @@
+name:  ${plugin.artifactId}
+main: com.mcdrum.mcdrum.McDrum
+version:  ${plugin.version}
+author: [intronate67]
