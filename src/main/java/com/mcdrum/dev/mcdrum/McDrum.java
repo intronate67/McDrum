@@ -8,8 +8,6 @@ import org.bukkit.plugin.java.JavaPlugin;
  */
 public class McDrum extends JavaPlugin{
     FileConfiguration config;
-    private McDrum instance = new McDrum();
-
     @Override
     public void onEnable(){
         if(!getDataFolder().exists()){
@@ -17,11 +15,12 @@ public class McDrum extends JavaPlugin{
             config = getConfig();
             saveDefaultConfig();
         }
-        getCommand("ctf").setExecutor(new CTFCommandHandler());
+
     }
     @Override
     public void onDisable(){
-
+        String arenaNames = CTFCommandHandler.getInstance().arenaNames.toString();
+        config.set("Games.CTF.arenaNames", arenaNames);
     }
 
 }
