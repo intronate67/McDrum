@@ -17,7 +17,7 @@ public class McDrum extends JavaPlugin{
             config = getConfig();
             saveDefaultConfig();
         }
-
+        getCommand("ctf").setExecutor(new CTFCommandHandler());
     }
     @Override
     public void onDisable(){
