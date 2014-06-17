@@ -1,5 +1,8 @@
 package com.mcdrum.dev.mcdrum;
 
+import org.bukkit.Bukkit;
+import org.bukkit.Location;
+import org.bukkit.World;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -11,7 +14,7 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
- * Created by Admin on 6/17/2014.
+ * @author intronate67
  */
 public class CTFCommandHandler implements CommandExecutor{
     public static final CTFCommandHandler instance = new CTFCommandHandler();
@@ -29,6 +32,15 @@ public class CTFCommandHandler implements CommandExecutor{
                 p.sendMessage("Command Usage: ");
                 p.sendMessage("/ctf join <arenaName>");
                 p.sendMessage("--List of Current Arenas");
+                String msg = arenaNames.toString();
+                p.sendMessage(msg);
+            }else{
+                World world = Bukkit.getWorld(config.getString(config.getString("Game.CTF." + args[2] + "world")));
+                double x = config.getDouble("Game.CTF."+ args[2] + "x");
+                double y = config.getDouble("Game.CTF." + args[2] + "y");
+                double z = config.getDouble("Game.CTF." + args[2] + "z");
+                Location loc = new Location(world, x, y, z);
+                p.teleport(loc);
             }
         }
         if(args[0].equalsIgnoreCase("leave")){
